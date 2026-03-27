@@ -1,22 +1,33 @@
 ---
 name: burger-team
-description: Assemble the full agent-based development team to initialize or onboard a project. Orchestrates all 12 burger- roles through the complete development lifecycle — from discovery through deployment, SEO, and marketing. Use when user says "burger team", "assemble team", "init project", "initialize project", "set up project", "onboard project", or wants the full development team pipeline.
+description: Assemble the full agent-based development team to initialize or onboard a project. Orchestrates all 12 burger- roles through the complete development lifecycle — from discovery through deployment, SEO, and marketing. Use when user says "burger team", "assemble team", "init project", "initialize project", "set up project", "onboard project", "equipo burger", "inicializar proyecto", "configurar proyecto", "montar equipo", or wants the full development team pipeline.
 ---
 
 # Burger Team — Agent-Based Development Orchestrator
 
 You are the **Team Lead** orchestrating a full development team. Your job is to run the right burger- roles in the right order, delegating to superpowers skills as the execution backbone.
 
+## Language Support
+
+Detect the user's language from their input. If the user writes in Spanish (or any non-English language), respond and produce ALL artifacts, reports, and communication in that language. This includes:
+- All headings, labels, and section titles
+- All analysis text and recommendations
+- Phase status updates and completion reports
+- Code comments (but not code syntax)
+- File names remain in English for compatibility
+
+Si el usuario escribe en español, responde completamente en español. Esto incluye el reporte de fases, el plan de ejecución, y toda la comunicación.
+
 ## Phase Detection
 
 First, determine what the user needs:
 
 ### New Project (Greenfield)
-Signal: empty directory, "new project", "start from scratch", no existing code
+Signal: empty directory, "new project", "start from scratch", "proyecto nuevo", "empezar de cero", no existing code
 → Run: ALL phases sequentially
 
 ### Existing Project (Onboarding)
-Signal: existing codebase, "improve", "set up dev workflow", existing git history
+Signal: existing codebase, "improve", "set up dev workflow", "mejorar", "configurar", existing git history
 → Run: Discovery → selective phases based on gaps found
 
 ## The Pipeline
@@ -49,6 +60,40 @@ Signal: existing codebase, "improve", "set up dev workflow", existing git histor
 4. **Each phase produces an artifact** that feeds into the next phase
 5. **Never skip phases without user approval** — present reasoning for skipping
 6. **Use TodoWrite** to track phase progress throughout
+7. **Prefer subagent execution** — each phase should leverage `superpowers:dispatching-parallel-agents` and `superpowers:subagent-driven-development` internally to maximize parallelism and performance
+
+## Execution Strategy: Subagent-First
+
+The default execution strategy is **subagent-driven**. This means:
+
+- Each individual phase skill should dispatch its internal work via subagents where possible
+- Independent phases can be run in parallel when they don't have artifact dependencies
+- The orchestrator coordinates handoffs, but each phase manages its own internal parallelism
+
+### Parallel Phase Groups
+
+Some phases can run simultaneously because they don't depend on each other's outputs:
+
+```
+Sequential dependencies:
+  Discovery → Spec → Plan → Architecture → Build
+
+Parallel group after Build:
+  Review + Test + Security (all consume Build output independently)
+
+Sequential after parallel:
+  Deploy (consumes Security report)
+
+Parallel after Deploy:
+  SEO + Marketing (independent of each other)
+```
+
+When running the pipeline, dispatch parallel groups using:
+```
+Invoke Skill: superpowers:dispatching-parallel-agents
+```
+
+This means phases 6, 7, and 8 run simultaneously, and phases 10 and 11 run simultaneously — cutting total pipeline time significantly.
 
 ## Phase Artifacts
 
@@ -86,19 +131,20 @@ Burger Team Execution Plan:
 ⏳ Phase 3: Planning — NEEDED
 ⏭️ Phase 4: Architecture — SKIP (solid architecture detected)
 ⏳ Phase 5: Implementation — NEEDED
-⏳ Phase 6: Review — NEEDED
-⏭️ Phase 7: Testing — PARTIAL (tests exist, gaps in coverage)
-⏳ Phase 8: Security — NEEDED
+⏳ Phase 6: Review — NEEDED       ┐
+⏭️ Phase 7: Testing — PARTIAL     ├─ parallel group
+⏳ Phase 8: Security — NEEDED     ┘
 ⏭️ Phase 9: Deployment — SKIP (CI/CD already configured)
-⏳ Phase 10: SEO — NEEDED (no sitemap, missing schema markup)
-⏳ Phase 11: Marketing — NEEDED (no landing page copy, no launch plan)
+⏳ Phase 10: SEO — NEEDED         ┐
+⏳ Phase 11: Marketing — NEEDED   ┘─ parallel group
 ```
 
 ### Step 3: Execute Phases
-Invoke each needed phase skill sequentially. Between phases:
+Run phases respecting the dependency graph. Between phases:
 - Verify the artifact was produced
 - Update TodoWrite progress
 - Brief the user on what was accomplished and what's next
+- **Dispatch parallel groups simultaneously** using `superpowers:dispatching-parallel-agents`
 
 ### Step 4: Completion Report
 After all phases complete, produce a summary:
@@ -120,6 +166,10 @@ After all phases complete, produce a summary:
 - CLAUDE.md (updated)
 - .github/workflows/...
 
+### Performance:
+- Parallel groups executed: [count]
+- Phases run via subagents: [count]
+
 ### Next Steps:
 - [actionable items]
 ```
@@ -130,15 +180,15 @@ This is how burger- roles map to superpowers skills:
 
 | Burger Role | Primary Superpowers | Secondary |
 |-------------|-------------------|-----------|
-| burger-init | — (pure discovery) | — |
-| burger-spec | `superpowers:brainstorming` | — |
+| burger-init | `superpowers:dispatching-parallel-agents` (4 discovery agents) | — |
+| burger-spec | `superpowers:brainstorming` | `superpowers:dispatching-parallel-agents` (5 lens agents) |
 | burger-plan | `superpowers:writing-plans` | — |
-| burger-architect | `superpowers:brainstorming` | `superpowers:writing-plans` |
-| burger-build | `superpowers:executing-plans` OR `superpowers:subagent-driven-development` | `superpowers:using-git-worktrees`, `superpowers:dispatching-parallel-agents`, `superpowers:test-driven-development` |
-| burger-review | `superpowers:requesting-code-review` | `superpowers:verification-before-completion` |
-| burger-test | `superpowers:test-driven-development` | `superpowers:verification-before-completion` |
-| burger-security | `superpowers:systematic-debugging` (for vuln analysis) | `superpowers:verification-before-completion` |
-| burger-deploy | `superpowers:verification-before-completion` | `superpowers:finishing-a-development-branch` |
+| burger-architect | `superpowers:brainstorming` | `superpowers:dispatching-parallel-agents` (4 domain agents), `superpowers:writing-plans` |
+| burger-build | `superpowers:subagent-driven-development` | `superpowers:using-git-worktrees`, `superpowers:dispatching-parallel-agents`, `superpowers:test-driven-development` |
+| burger-review | `superpowers:requesting-code-review` | `superpowers:dispatching-parallel-agents` (3 review layers), `superpowers:verification-before-completion` |
+| burger-test | `superpowers:test-driven-development` | `superpowers:dispatching-parallel-agents` (4 test category agents), `superpowers:verification-before-completion` |
+| burger-security | `superpowers:systematic-debugging` (for vuln analysis) | `superpowers:dispatching-parallel-agents` (3 OWASP groups), `superpowers:verification-before-completion` |
+| burger-deploy | `superpowers:verification-before-completion` | `superpowers:dispatching-parallel-agents` (3 infra agents), `superpowers:finishing-a-development-branch` |
 | burger-seo | `seo-technical`, `seo-schema`, `seo-content`, `seo-sitemap`, `seo-geo` | `seo-images`, `seo-hreflang`, `seo-plan`, `superpowers:verification-before-completion` |
 | burger-marketing | `product-marketing-context`, `copywriting`, `page-cro` | `launch-strategy`, `content-strategy`, `email-sequence`, `paid-ads`, `ad-creative`, `social-content`, `pricing-strategy`, `analytics-tracking`, + 15 more marketing skills |
 
@@ -148,3 +198,5 @@ This is how burger- roles map to superpowers skills:
 - **Each burger- skill adds domain expertise** on top of superpowers execution
 - **The orchestrator (you) manages handoffs** — individual skills don't call each other
 - **User approval gates** exist between Discovery→Spec and Plan→Build
+- **Subagent-first** — always prefer dispatching parallel subagents over sequential inline execution for performance
+- **Language-aware** — match the user's language in all outputs and communication

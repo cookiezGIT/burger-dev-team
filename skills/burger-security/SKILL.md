@@ -94,6 +94,21 @@ Systematically check for each category:
 - [ ] Internal service requests restricted
 - [ ] DNS rebinding protection
 
+### Parallel OWASP Audit
+
+For thorough analysis, dispatch subagents to audit OWASP categories in parallel:
+
+```
+Invoke Skill: superpowers:dispatching-parallel-agents
+```
+
+Group into 3 parallel subagents by domain:
+1. **Access & Auth Auditor** — A01 (Broken Access Control), A04 (Insecure Design), A07 (Auth Failures)
+2. **Data & Injection Auditor** — A02 (Cryptographic Failures), A03 (Injection), A08 (Data Integrity), A10 (SSRF)
+3. **Config & Monitoring Auditor** — A05 (Security Misconfiguration), A06 (Vulnerable Components), A09 (Logging & Monitoring)
+
+Each subagent receives the full codebase context and produces a structured findings list with severity ratings. Synthesize into the unified security report.
+
 ### Step 3: Secret Management Audit
 
 - [ ] No secrets in source code (grep for API keys, passwords, tokens)

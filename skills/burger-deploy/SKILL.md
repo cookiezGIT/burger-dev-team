@@ -116,6 +116,21 @@ Ensure CLAUDE.md includes:
 - Environment setup instructions
 - Architecture overview for future Claude sessions
 
+### Parallel Infrastructure Setup
+
+For comprehensive projects, dispatch setup tasks in parallel:
+
+```
+Invoke Skill: superpowers:dispatching-parallel-agents
+```
+
+Dispatch 3 subagents:
+1. **Environment Setup Agent** — Docker configs, .env files, dev setup scripts, docker-compose
+2. **CI/CD Pipeline Agent** — GitHub Actions workflows, build/test/deploy pipelines
+3. **Monitoring & Docs Agent** — Health checks, logging config, error tracking, Makefile, CLAUDE.md updates
+
+Each works independently since these infrastructure concerns don't depend on each other. After all complete, verify the full stack works together end-to-end.
+
 ### Step 7: Pre-Deploy Verification
 
 ```

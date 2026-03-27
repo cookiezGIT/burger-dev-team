@@ -89,6 +89,22 @@ Priority order:
 3. **E2E tests** for critical user paths
 4. **Edge case tests** from the spec
 
+### Parallel Test Writing
+
+When multiple test categories have gaps, dispatch subagents in parallel — one per category:
+
+```
+Invoke Skill: superpowers:dispatching-parallel-agents
+```
+
+Dispatch up to 4 subagents:
+1. **Integration Test Writer** — focuses on API and service integration tests
+2. **Unit Test Writer** — focuses on business logic and utility unit tests
+3. **E2E Test Writer** — focuses on critical user flow end-to-end tests
+4. **Edge Case Test Writer** — focuses on boundary conditions and error scenarios
+
+Each subagent receives the gap analysis, relevant source files, and existing test patterns. All use TDD (red-green-refactor). After completion, run the full suite to catch any conflicts between newly written tests.
+
 #### Test Quality Standards
 
 **Good tests are:**
