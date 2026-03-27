@@ -1,6 +1,6 @@
 ---
 name: burger-team
-description: Assemble the full agent-based development team to initialize or onboard a project. Orchestrates all burger- roles through the complete development lifecycle. Use when user says "burger team", "assemble team", "init project", "initialize project", "set up project", "onboard project", or wants the full development team pipeline.
+description: Assemble the full agent-based development team to initialize or onboard a project. Orchestrates all 12 burger- roles through the complete development lifecycle — from discovery through deployment, SEO, and marketing. Use when user says "burger team", "assemble team", "init project", "initialize project", "set up project", "onboard project", or wants the full development team pipeline.
 ---
 
 # Burger Team — Agent-Based Development Orchestrator
@@ -35,6 +35,8 @@ Signal: existing codebase, "improve", "set up dev workflow", existing git histor
 │  Phase 7: TESTING          → /burger-team:burger-test      │
 │  Phase 8: SECURITY         → /burger-team:burger-security  │
 │  Phase 9: DEPLOYMENT       → /burger-team:burger-deploy    │
+│  Phase 10: SEO             → /burger-team:burger-seo       │
+│  Phase 11: MARKETING       → /burger-team:burger-marketing │
 │                                                      │
 └─────────────────────────────────────────────────────┘
 ```
@@ -61,6 +63,8 @@ Signal: existing codebase, "improve", "set up dev workflow", existing git histor
 | Testing | burger-test | Test Suite + Results | Build (fixes) |
 | Security | burger-security | Security Report | Build (fixes), Deploy |
 | Deployment | burger-deploy | Deploy Config + Pipeline | — |
+| SEO | burger-seo | SEO Report + Fixes | Deploy, Marketing |
+| Marketing | burger-marketing | Marketing Report + Assets | — |
 
 ## Execution Flow
 
@@ -86,6 +90,8 @@ Burger Team Execution Plan:
 ⏭️ Phase 7: Testing — PARTIAL (tests exist, gaps in coverage)
 ⏳ Phase 8: Security — NEEDED
 ⏭️ Phase 9: Deployment — SKIP (CI/CD already configured)
+⏳ Phase 10: SEO — NEEDED (no sitemap, missing schema markup)
+⏳ Phase 11: Marketing — NEEDED (no landing page copy, no launch plan)
 ```
 
 ### Step 3: Execute Phases
@@ -133,6 +139,8 @@ This is how burger- roles map to superpowers skills:
 | burger-test | `superpowers:test-driven-development` | `superpowers:verification-before-completion` |
 | burger-security | `superpowers:systematic-debugging` (for vuln analysis) | `superpowers:verification-before-completion` |
 | burger-deploy | `superpowers:verification-before-completion` | `superpowers:finishing-a-development-branch` |
+| burger-seo | `seo-technical`, `seo-schema`, `seo-content`, `seo-sitemap`, `seo-geo` | `seo-images`, `seo-hreflang`, `seo-plan`, `superpowers:verification-before-completion` |
+| burger-marketing | `product-marketing-context`, `copywriting`, `page-cro` | `launch-strategy`, `content-strategy`, `email-sequence`, `paid-ads`, `ad-creative`, `social-content`, `pricing-strategy`, `analytics-tracking`, + 15 more marketing skills |
 
 ## Important
 
