@@ -4,6 +4,10 @@ An agent-based development team plugin for [Claude Code](https://docs.anthropic.
 
 Instead of reinventing development workflows, Burger Dev Team wraps battle-tested skill chains (brainstorming, planning, TDD, code review, SEO auditing, marketing strategy, etc.) and adds domain-specific expertise for each role — so you get a full dev team without the overhead.
 
+**Subagent-first architecture** — every phase dispatches parallel subagents internally for maximum performance. Independent phases (Review + Test + Security, SEO + Marketing) run simultaneously.
+
+**Multilingual** — responds in the user's language. Full Spanish support built-in. / **Soporte completo en español.**
+
 <p align="center">
   <img src="assets/demo.svg" alt="Burger Team demo — 11-phase pipeline" width="750"/>
 </p>
@@ -110,8 +114,12 @@ This auto-detects whether you're starting fresh or onboarding an existing codeba
 ### The Pipeline
 
 ```
-Discovery → Spec → Plan → Architecture → Build → Review → Test → Security → Deploy → SEO → Marketing
+Discovery → Spec → Plan → Architecture → Build → ┬─ Review  ─┬→ Deploy → ┬─ SEO       ─┐
+                                                  ├─ Test     ─┤          └─ Marketing  ─┘
+                                                  └─ Security ─┘
 ```
+
+Phases 6-8 run in parallel (all consume Build output). Phases 10-11 run in parallel (independent of each other). Each phase also dispatches internal subagents for further parallelism.
 
 Each phase produces artifacts that feed the next:
 
@@ -129,21 +137,20 @@ Each phase produces artifacts that feed the next:
 Every agent delegates execution to proven skills rather than reinventing workflows:
 
 ```
-burger-spec      → superpowers:brainstorming
+burger-init      → 4 parallel discovery subagents
+burger-spec      → superpowers:brainstorming + 5 parallel lens subagents
 burger-plan      → superpowers:writing-plans
-burger-architect → superpowers:brainstorming + writing-plans
-burger-build     → superpowers:executing-plans / subagent-driven-development
+burger-architect → superpowers:brainstorming + 4 parallel domain subagents
+burger-build     → superpowers:subagent-driven-development (default)
                    superpowers:dispatching-parallel-agents
                    superpowers:test-driven-development
                    superpowers:using-git-worktrees
                    ui-ux-pro-max (Frontend Expert)
-burger-review    → superpowers:requesting-code-review
-burger-test      → superpowers:test-driven-development
+burger-review    → superpowers:requesting-code-review + 3 parallel review layers
+burger-test      → superpowers:test-driven-development + 4 parallel test writers
+burger-security  → superpowers:systematic-debugging + 3 parallel OWASP auditors
+burger-deploy    → 3 parallel infra subagents (env, CI/CD, monitoring)
                    superpowers:verification-before-completion
-burger-security  → superpowers:systematic-debugging
-                   superpowers:verification-before-completion
-burger-deploy    → superpowers:verification-before-completion
-                   superpowers:finishing-a-development-branch
 burger-seo       → seo-technical, seo-schema, seo-content, seo-sitemap
                    seo-geo, seo-images, seo-hreflang, seo-plan
 burger-marketing → product-marketing-context, copywriting, page-cro
