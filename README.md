@@ -4,6 +4,10 @@ An agent-based development team plugin for [Claude Code](https://docs.anthropic.
 
 Instead of reinventing development workflows, Burger Dev Team wraps battle-tested skill chains (brainstorming, planning, TDD, code review, SEO auditing, marketing strategy, etc.) and adds domain-specific expertise for each role — so you get a full dev team without the overhead.
 
+<p align="center">
+  <img src="assets/demo.svg" alt="Burger Team demo — 11-phase pipeline" width="750"/>
+</p>
+
 ## Installation
 
 ### Option 1: Install from GitHub (recommended)

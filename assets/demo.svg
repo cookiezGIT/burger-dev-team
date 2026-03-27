@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" font-family="'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, monospace" font-size="13">
+  <style>
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes typeIn { from { width: 0; } to { width: 100%; } }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    .terminal-bg { fill: #1a1b26; }
+    .title-bar { fill: #24283b; }
+    .prompt { fill: #7aa2f7; }
+    .command { fill: #c0caf5; }
+    .success { fill: #9ece6a; }
+    .info { fill: #7dcfff; }
+    .warning { fill: #e0af68; }
+    .dim { fill: #565f89; }
+    .accent { fill: #bb9af7; }
+    .red-dot { fill: #f7768e; }
+    .yellow-dot { fill: #e0af68; }
+    .green-dot { fill: #9ece6a; }
+    .line1 { animation: fadeIn 0.3s ease-in 0.5s both; }
+    .line2 { animation: fadeIn 0.3s ease-in 1.2s both; }
+    .line3 { animation: fadeIn 0.3s ease-in 1.6s both; }
+    .line4 { animation: fadeIn 0.3s ease-in 2.0s both; }
+    .line5 { animation: fadeIn 0.3s ease-in 2.4s both; }
+    .line6 { animation: fadeIn 0.3s ease-in 2.8s both; }
+    .line7 { animation: fadeIn 0.3s ease-in 3.2s both; }
+    .line8 { animation: fadeIn 0.3s ease-in 3.6s both; }
+    .line9 { animation: fadeIn 0.3s ease-in 4.0s both; }
+    .line10 { animation: fadeIn 0.3s ease-in 4.4s both; }
+    .line11 { animation: fadeIn 0.3s ease-in 4.8s both; }
+    .line12 { animation: fadeIn 0.3s ease-in 5.2s both; }
+    .line13 { animation: fadeIn 0.3s ease-in 5.6s both; }
+    .line14 { animation: fadeIn 0.3s ease-in 6.0s both; }
+    .line15 { animation: fadeIn 0.3s ease-in 6.8s both; }
+    .line16 { animation: fadeIn 0.3s ease-in 7.2s both; }
+    .line17 { animation: fadeIn 0.3s ease-in 7.8s both; }
+    .cursor { animation: blink 1s step-end infinite; fill: #c0caf5; }
+  </style>
+
+  <!-- Terminal window -->
+  <rect class="terminal-bg" width="800" height="520" rx="10"/>
+  <rect class="title-bar" width="800" height="36" rx="10"/>
+  <rect class="title-bar" y="26" width="800" height="10"/>
+  <circle class="red-dot" cx="20" cy="18" r="6"/>
+  <circle class="yellow-dot" cx="40" cy="18" r="6"/>
+  <circle class="green-dot" cx="60" cy="18" r="6"/>
+  <text x="400" y="22" text-anchor="middle" fill="#a9b1d6" font-size="12">Claude Code — burger-team</text>
+
+  <!-- Line 1: Prompt + command -->
+  <g class="line1">
+    <text x="16" y="65" class="prompt">❯</text>
+    <text x="32" y="65" class="command">/burger-team:burger-team</text>
+  </g>
+
+  <!-- Line 2: Header -->
+  <g class="line2">
+    <text x="16" y="90" class="accent">🍔 Burger Team — Assembling 12 agents...</text>
+  </g>
+
+  <!-- Line 3-13: Pipeline phases -->
+  <g class="line3">
+    <text x="16" y="118" class="success">  ✅ Phase 1:  Discovery</text>
+    <text x="280" y="118" class="dim">— SaaS detected, Next.js + Prisma + PostgreSQL</text>
+  </g>
+  <g class="line4">
+    <text x="16" y="140" class="success">  ✅ Phase 2:  Specification</text>
+    <text x="280" y="140" class="dim">— 3 feature specs with acceptance criteria</text>
+  </g>
+  <g class="line5">
+    <text x="16" y="162" class="success">  ✅ Phase 3:  Planning</text>
+    <text x="280" y="162" class="dim">— 14 tasks across 4 parallel groups</text>
+  </g>
+  <g class="line6">
+    <text x="16" y="184" class="success">  ✅ Phase 4:  Architecture</text>
+    <text x="280" y="184" class="dim">— Data models, API contracts, 2 ADRs</text>
+  </g>
+  <g class="line7">
+    <text x="16" y="206" class="success">  ✅ Phase 5:  Implementation</text>
+    <text x="280" y="206" class="dim">— 3 expert subagents dispatched in parallel</text>
+  </g>
+  <g class="line8">
+    <text x="16" y="228" class="success">  ✅ Phase 6:  Review</text>
+    <text x="280" y="228" class="dim">— Spec + architecture compliance verified</text>
+  </g>
+  <g class="line9">
+    <text x="16" y="250" class="success">  ✅ Phase 7:  Testing</text>
+    <text x="280" y="250" class="dim">— 92% coverage, 47 tests passing</text>
+  </g>
+  <g class="line10">
+    <text x="16" y="272" class="success">  ✅ Phase 8:  Security</text>
+    <text x="280" y="272" class="dim">— OWASP audit clean, 0 critical issues</text>
+  </g>
+  <g class="line11">
+    <text x="16" y="294" class="success">  ✅ Phase 9:  Deployment</text>
+    <text x="280" y="294" class="dim">— CI/CD pipeline + Docker + health checks</text>
+  </g>
+  <g class="line12">
+    <text x="16" y="316" class="success">  ✅ Phase 10: SEO</text>
+    <text x="280" y="316" class="dim">— Schema markup, sitemap, Core Web Vitals, GEO</text>
+  </g>
+  <g class="line13">
+    <text x="16" y="338" class="success">  ✅ Phase 11: Marketing</text>
+    <text x="280" y="338" class="dim">— Launch strategy, copy, CRO, email sequence</text>
+  </g>
+
+  <!-- Separator -->
+  <g class="line14">
+    <text x="16" y="370" class="dim">  ─────────────────────────────────────────────────────────</text>
+  </g>
+
+  <!-- Summary -->
+  <g class="line15">
+    <text x="16" y="395" class="info">  📊 11 phases completed</text>
+    <text x="220" y="395" class="dim">│</text>
+    <text x="235" y="395" class="info">14 artifacts created</text>
+    <text x="430" y="395" class="dim">│</text>
+    <text x="445" y="395" class="info">47 tests passing</text>
+  </g>
+
+  <g class="line16">
+    <text x="16" y="420" class="success">  🚀 Project is built, tested, secured, optimized, and ready for launch.</text>
+  </g>
+
+  <!-- Next prompt -->
+  <g class="line17">
+    <text x="16" y="455" class="prompt">❯</text>
+    <rect class="cursor" x="32" y="443" width="8" height="16"/>
+  </g>
+</svg>
