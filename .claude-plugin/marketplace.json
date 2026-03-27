@@ -1,0 +1,23 @@
+{
+  "name": "burger-team",
+  "description": "Agent-based development team with 12 specialized roles for the full development-to-launch lifecycle",
+  "owner": {
+    "name": "Renzo",
+    "url": "https://github.com/cookiezGIT"
+  },
+  "plugins": [
+    {
+      "name": "burger-team",
+      "description": "12-agent development team: orchestrator, spec writer, planner, architect, build dispatcher, code reviewer, tester, security expert, devops, SEO expert, and marketing strategist. Powered by superpowers, SEO, marketing, and ui-ux-pro-max skills.",
+      "source": "./",
+      "version": "1.1.0",
+      "author": {
+        "name": "Renzo"
+      },
+      "keywords": ["development", "team", "agents", "seo", "marketing", "devops", "testing", "security"],
+      "category": "development",
+      "license": "MIT",
+      "repository": "https://github.com/cookiezGIT/burger-dev-team"
+    }
+  ]
+}
