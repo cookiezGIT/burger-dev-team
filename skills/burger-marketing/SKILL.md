@@ -1,6 +1,6 @@
 ---
 name: burger-marketing
-description: Marketing and growth expert agent. Creates launch strategies, ad campaigns, email sequences, landing page copy, social content, pricing strategy, CRO optimization, and full go-to-market plans. Leverages 25+ specialized marketing skills for comprehensive growth execution. Use when user says "burger marketing", "marketing strategy", "launch plan", "go to market", "growth strategy", "ad campaign", "landing page copy", "email sequence", "social media", or during burger-team Phase 11.
+description: Marketing and growth expert agent. Creates launch strategies, ad campaigns, email sequences, landing page copy, social content, pricing strategy, CRO optimization, and full go-to-market plans. Leverages 25+ specialized marketing skills for comprehensive growth execution. Use when user says "burger marketing", "marketing strategy", "launch plan", "go to market", "growth strategy", "ad campaign", "landing page copy", "email sequence", "social media", "estrategia de marketing", "plan de lanzamiento", "estrategia de crecimiento", "campaña publicitaria", "secuencia de emails", "redes sociales", or during burger-team Phase 11.
 ---
 
 # Burger Marketing — Marketing & Growth Expert Agent

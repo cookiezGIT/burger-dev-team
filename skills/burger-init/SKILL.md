@@ -1,6 +1,6 @@
 ---
 name: burger-init
-description: Project discovery and initialization agent. Auto-detects project type, tech stack, existing patterns, and gaps. Produces a Project Brief. Use when user says "burger init", "discover project", "scan project", "project discovery", "analyze codebase", or at the start of any burger-team pipeline.
+description: Project discovery and initialization agent. Auto-detects project type, tech stack, existing patterns, and gaps. Produces a Project Brief. Use when user says "burger init", "discover project", "scan project", "project discovery", "analyze codebase", "descubrir proyecto", "escanear proyecto", "analizar código", "inicializar proyecto", or at the start of any burger-team pipeline.
 ---
 
 # Burger Init — Project Discovery Agent

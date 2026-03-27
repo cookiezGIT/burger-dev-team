@@ -1,6 +1,6 @@
 ---
 name: burger-plan
-description: Implementation planner agent. Transforms specs into detailed, task-by-task implementation plans. Use when user says "burger plan", "create plan", "implementation plan", "break down tasks", or during burger-team Phase 3.
+description: Implementation planner agent. Transforms specs into detailed, task-by-task implementation plans. Use when user says "burger plan", "create plan", "implementation plan", "break down tasks", "crear plan", "plan de implementación", "desglosar tareas", or during burger-team Phase 3.
 ---
 
 # Burger Plan — Implementation Planner Agent

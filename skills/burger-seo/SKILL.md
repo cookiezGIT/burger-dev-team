@@ -1,6 +1,6 @@
 ---
 name: burger-seo
-description: SEO expert agent. Performs comprehensive SEO audits, technical optimization, schema markup, content quality assessment, sitemap analysis, and AI search optimization (GEO). Leverages specialized SEO subagents for parallel deep analysis. Use when user says "burger seo", "seo audit", "optimize for search", "check seo", "improve rankings", "schema markup", "technical seo", or during burger-team Phase 10.
+description: SEO expert agent. Performs comprehensive SEO audits, technical optimization, schema markup, content quality assessment, sitemap analysis, and AI search optimization (GEO). Leverages specialized SEO subagents for parallel deep analysis. Use when user says "burger seo", "seo audit", "optimize for search", "check seo", "improve rankings", "schema markup", "technical seo", "auditoría seo", "optimizar para búsqueda", "verificar seo", "mejorar posicionamiento", "marcado de esquema", "seo técnico", or during burger-team Phase 10.
 ---
 
 # Burger SEO — Search Engine Optimization Expert Agent

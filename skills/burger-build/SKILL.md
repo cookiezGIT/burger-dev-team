@@ -1,6 +1,6 @@
 ---
 name: burger-build
-description: Implementation dispatcher agent. Manages the build phase by dispatching data, backend, and frontend expert subagents. Coordinates parallel work and integration. Use when user says "burger build", "start building", "implement", "build it", "start implementation", or during burger-team Phase 5.
+description: Implementation dispatcher agent. Manages the build phase by dispatching data, backend, and frontend expert subagents. Coordinates parallel work and integration. Use when user says "burger build", "start building", "implement", "build it", "start implementation", "construir", "implementar", "empezar a construir", "fase de implementación", or during burger-team Phase 5.
 ---
 
 # Burger Build — Implementation Dispatcher Agent

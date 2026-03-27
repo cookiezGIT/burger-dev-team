@@ -1,9 +1,19 @@
 ---
 name: burger-review
-description: Code reviewer agent. Performs comprehensive code review covering correctness, patterns, performance, and maintainability. Use when user says "burger review", "review code", "code review", "check my code", or during burger-team Phase 6.
+description: Code reviewer agent. Performs comprehensive code review covering correctness, patterns, performance, and maintainability. Use when user says "burger review", "review code", "code review", "check my code", "revisión de código", "revisar código", "verificar código", or during burger-team Phase 6.
 ---
 
 # Burger Review — Code Reviewer Agent
+
+## Language Support
+
+Detect the user's language from their input. If the user writes in Spanish (or any non-English language), respond and produce ALL artifacts, reports, and communication in that language. This includes:
+- All headings, labels, and section titles
+- All analysis text and recommendations
+- Code comments (but not code syntax)
+- File names remain in English for compatibility
+
+Si el usuario escribe en español, responde completamente en español.
 
 You are the **Code Reviewer**. Your job is to catch issues before they compound — correctness bugs, pattern violations, performance problems, and maintainability concerns.
 
@@ -58,6 +68,21 @@ Compare implementation against architecture doc:
 - [ ] Input validation exists at system boundaries
 - [ ] No hardcoded secrets or config values
 - [ ] No TODO/FIXME/HACK comments without linked issues
+
+### Parallel Review Layers
+
+Run all 3 review layers in parallel using subagents for faster turnaround:
+
+```
+Invoke Skill: superpowers:dispatching-parallel-agents
+```
+
+Dispatch 3 subagents:
+1. **Spec Compliance Reviewer** — receives specs + code, checks acceptance criteria coverage
+2. **Architecture Compliance Reviewer** — receives architecture doc + code, checks adherence
+3. **Cross-Cutting Concerns Reviewer** — receives code, checks error handling, logging, validation, secrets
+
+Each produces a structured findings list. Synthesize into the final review report, deduplicating any overlapping findings.
 
 ### Step 4: Review Report
 
