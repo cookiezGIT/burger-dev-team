@@ -1,6 +1,6 @@
 {
   "name": "burger-team",
-  "description": "Agent-based development team with 12 specialized roles for the full development-to-launch lifecycle",
+  "description": "Agent-based development team with 15 specialized roles for the full development-to-launch lifecycle. v2: discussion phase, plan verification, wave execution, UAT, error recovery, atomic git, state persistence, auto-advance.",
   "owner": {
     "name": "Renzo",
     "url": "https://github.com/cookiezGIT"
@@ -8,9 +8,9 @@
   "plugins": [
     {
       "name": "burger-team",
-      "description": "12-agent development team: orchestrator, spec writer, planner, architect, build dispatcher, code reviewer, tester, security expert, devops, SEO expert, and marketing strategist. Powered by superpowers, SEO, marketing, and ui-ux-pro-max skills.",
+      "description": "15-agent development team with discussion phase, 8-dimension plan verification, wave-based execution, UAT gate, error recovery (RETRY/DECOMPOSE/PRUNE), atomic git history, state persistence, context handoff, requirements traceability, and auto-advance. Powered by superpowers, SEO, marketing, and ui-ux-pro-max skills.",
       "source": "./",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "author": {
         "name": "Renzo"
       },

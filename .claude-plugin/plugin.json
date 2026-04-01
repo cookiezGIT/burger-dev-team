@@ -1,7 +1,7 @@
 {
   "name": "burger-team",
-  "version": "1.0.0",
-  "description": "Agent-based development team that orchestrates project initialization and the full development-to-launch lifecycle. 12 specialized roles (orchestrator, spec writer, planner, architect, implementers, reviewer, tester, security expert, devops, SEO expert, marketing strategist) powered by superpowers, SEO, marketing, and ui-ux-pro-max skills.",
+  "version": "2.0.0",
+  "description": "Agent-based development team that orchestrates the full development-to-launch lifecycle. 15 specialized roles including discussion facilitator, verified implementation with wave execution, UAT gate, auto-advance, state persistence, context handoff, 8-dimension plan verification, error recovery (RETRY/DECOMPOSE/PRUNE), and atomic git history. Powered by superpowers, SEO, marketing, and ui-ux-pro-max skills.",
   "author": {
     "name": "Renzo"
   },

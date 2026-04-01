@@ -149,6 +149,86 @@ If integration issues arise:
 Invoke Skill: superpowers:systematic-debugging
 ```
 
+## Wave-Based Execution
+
+When using Strategy A or C, organize tasks into dependency-aware waves for maximum parallelism:
+
+### How Waves Work
+
+1. **Analyze dependencies** — Build a dependency graph from the plan. Tasks with no dependencies go in Wave 1.
+2. **Wave 1** — Execute all independent tasks simultaneously via parallel subagents. Each subagent gets fresh context with only the relevant plan task + project brief + architecture doc.
+3. **Post-Wave 1 verification** — Run tests, verify outputs, ensure no conflicts.
+4. **Wave 2** — Execute tasks that depend on Wave 1 outputs. Again, parallel within the wave.
+5. **Continue** until all waves complete.
+
+### Example
+
+```
+Wave 1 (parallel):  DB schema + Auth middleware + Frontend layout
+Wave 2 (parallel):  API endpoints (needs schema) + Auth pages (needs middleware)
+Wave 3 (sequential): Integration tests (needs everything)
+```
+
+Each executor subagent receives a fresh context window — this prevents quality degradation from accumulated context. Only load:
+- The specific task from the plan
+- Project Brief
+- Architecture doc
+- Relevant source files (only what the task needs)
+
+## Error Recovery
+
+When a task fails during execution, use structured recovery instead of ad-hoc debugging:
+
+### Recovery Strategies
+
+Try these in order:
+
+1. **RETRY** — Re-execute the task with a fresh subagent context. Sometimes the original attempt simply got confused by accumulated context. If it works on retry, proceed.
+
+2. **DECOMPOSE** — Break the failing task into 2-3 smaller sub-tasks. Often a task fails because it's too complex for a single execution. Create the sub-tasks, add them to the plan, and execute them in sequence.
+
+3. **PRUNE** — If the task is truly blocked (external dependency unavailable, fundamental design issue), mark it as blocked, document why, and surface it to the user. Don't waste cycles retrying what can't work.
+
+### Recovery Log
+
+Track recovery attempts in the build output:
+```markdown
+## Recovery Log
+- Task 3 (Create auth middleware): RETRY → succeeded on 2nd attempt
+- Task 5 (Payment integration): DECOMPOSE → split into 5a (Stripe setup) + 5b (webhook handler)
+- Task 7 (Email service): PRUNE → blocked, SMTP credentials not available
+```
+
+## Atomic Git History
+
+Each completed task gets its own commit with a structured message format:
+
+```
+feat(phase-task): short description
+
+- What was implemented
+- Key decisions made
+- Verification: [how it was verified]
+
+Refs: REQ-001, REQ-003
+```
+
+**Example:**
+```
+feat(05-02): add user registration API endpoint
+
+- POST /api/auth/register with email/password validation
+- Argon2 password hashing, JWT token response
+- Verification: curl POST returns 201 + valid JWT
+
+Refs: REQ-001, REQ-003
+```
+
+This enables:
+- **`git bisect`** to find exactly which task introduced a bug
+- **Surgical reverts** of individual tasks without affecting other work
+- **Clear history** for code reviewers to understand the implementation sequence
+
 ## Step 6: Build Completion
 
 When all tasks are complete:
